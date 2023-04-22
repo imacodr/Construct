@@ -1,0 +1,8 @@
+[package]
+name = "imacodr/PodIcons"
+version = "0.1.0"
+authors = [
+    "Sam P <me@imacodr.com>"
+]
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
