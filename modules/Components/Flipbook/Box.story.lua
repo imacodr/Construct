@@ -1,10 +1,13 @@
 local Box = require(script.Parent.Parent.Box)
 
 return {
-	summary = "A generic container component",
-	story = function()
+	summary = "A basic frame",
+	story = function(parent)
 		return Box({
-			Bg = Color3.fromRGB(255, 0, 0),
+			Parent = parent,
+			PreSize = "xl",
+			PrePosition = "topLeft",
+			BackgroundColor = Color3.fromRGB(255, 0, 0),
 		})
 	end,
 }

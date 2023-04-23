@@ -16,9 +16,6 @@ function KitProvider(props: Types.KitProviderProps)
 
 	local GuiType = props.GuiType or "ScreenGui"
 
-	_G.PODKIT_THEME = props.Theme
-	print("Provider")
-
 	return New(GuiType)({
 		Name = "PodKitBuilder",
 		Parent = player:WaitForChild("PlayerGui"),

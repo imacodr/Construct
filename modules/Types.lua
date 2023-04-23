@@ -42,11 +42,21 @@ export type BaseComponents = {
 	AutomaticSize: CanBeState<Enum.AutomaticSize>?,
 	ZIndex: CanBeState<number>?,
 	PreSize: "xsm" | "xm" | "sm" | "md" | "xl" | "lg" | "xxl"?,
-	PrePosition: "topLeft" | "topRight" | "bottomLeft" | "bottomRight" | "center"?,
+	PrePosition: "topLeft"
+		| "topRight"
+		| "bottomLeft"
+		| "bottomRight"
+		| "center"
+		| "bottomCenter"
+		| "topCenter"
+		| "left"
+		| "right"?,
 }
 
 export type BoxProps = BaseComponents & {
 	BackgroundTransparency: CanBeState<number>?,
+	BackgroundColor: CanBeState<string | Color3Value>?,
+	Bg: CanBeState<string | Color3Value>?,
 }
 
 export type DockProps = BaseComponents & {
@@ -59,8 +69,20 @@ export type DockProps = BaseComponents & {
 export type ButtonProps = BaseComponents & {
 	Padding: ({ [number]: number } | number)?,
 	Bg: string | Color3Value?,
+	BackgroundColor: string | Color3Value?,
+	TextColor: string | Color3Value?,
 	Disabled: boolean | Value<boolean>?,
 	OnClick: () -> any?,
+	OnHoverStart: () -> any?,
+	OnHoverEnd: () -> any?,
+	Text: string,
+	[Children]: Child,
+}
+export type TextProps = BaseComponents & {
+	Padding: ({ [number]: number } | number)?,
+	Bg: string | Color3Value?,
+	BackgroundColor: string | Color3Value?,
+	TextColor: string | Color3Value?,
 	OnHoverStart: () -> any?,
 	OnHoverEnd: () -> any?,
 	Text: string,
@@ -70,12 +92,14 @@ export type ButtonProps = BaseComponents & {
 export type IconButtonProps = BaseComponents & {
 	Padding: ({ [number]: number } | number)?,
 	Bg: string | Color3Value?,
+	BackgroundColor: string | Color3Value?,
 	Disabled: boolean | Value<boolean>?,
 	OnClick: () -> any?,
 	OnHoverStart: () -> any?,
 	OnHoverEnd: () -> any?,
 	Icon: string | ImageLabel?,
 	Variant: "full" | "ghost"?,
+	IconColor: string | Color3Value?,
 	[Children]: Child,
 }
 

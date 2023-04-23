@@ -10,6 +10,8 @@ local Spring = Fusion.Spring
 
 local Utils = require(script.Parent.Parent.Utils)
 
+local checkTheme = require(script.Parent.Parent.Core.themeManager).checkTheme
+
 local Basics = Utils.Basics
 local Constants = Utils.Constants
 
@@ -55,24 +57,26 @@ function IconButton(props: Types.IconButtonProps): Child
 		AnchorPoint = anchorPoint,
 		AutomaticSize = props.AutomaticSize,
 		ZIndex = props.ZIndex,
+		Parent = props.Parent,
 		BackgroundTransparency = transparency,
 
 		Image = props.Icon or Constants.NO_ICON_URL,
+		ImageColor3 = checkTheme(props.IconColor) or checkTheme(props.IconColour) or Basics.IconButton.IconColor,
 
 		BackgroundColor3 = Spring(
 			Computed(function()
-				local baseColour = Basics.IconButton.Bg
+				local baseColor = checkTheme(props.BackgroundColor) or checkTheme(props.Bg) or Basics.IconButton.Bg
 				if props.Disabled:get() then
-					baseColour = baseColour:Lerp(Color3.fromHex("CCCCCC"), 0.7)
-					return baseColour
+					baseColor = baseColor:Lerp(Color3.fromHex("CCCCCC"), 0.7)
+					return baseColor
 				else
 					-- darken/lighten when hovered or held down
 					if isHeldDown:get() then
-						baseColour = baseColour:Lerp(Color3.new(0, 0, 0), 0.25)
+						baseColor = baseColor:Lerp(Color3.new(0, 0, 0), 0.25)
 					elseif isHovering:get() then
-						baseColour = baseColour:Lerp(Color3.new(1, 1, 1), 0.25)
+						baseColor = baseColor:Lerp(Color3.new(1, 1, 1), 0.25)
 					end
-					return baseColour
+					return baseColor
 				end
 			end),
 			20

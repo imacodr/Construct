@@ -2,11 +2,16 @@ local Button = require(script.Parent.Parent.Button)
 
 return {
 	summary = "A button component",
-	story = function()
+	controls = {
+		Disabled = false,
+	},
+	story = function(parent, props)
 		return Button({
-			Size = UDim2.fromScale(0.3, 0.25),
-			Position = UDim2.fromScale(0.25, 0.25),
+			Parent = parent,
+			PreSize = "md",
+			PrePosition = "topLeft",
 			Text = "Hello World!",
+			Disabled = props.controls.Disabled,
 		})
 	end,
 }

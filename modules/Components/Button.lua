@@ -8,7 +8,9 @@ local OnEvent = Fusion.OnEvent
 local Computed = Fusion.Computed
 local Spring = Fusion.Spring
 
-local Basics = require(script.Parent.Parent.Utils.Basics)
+local Basics = _G.PODKIT_THEME
+
+local checkTheme = require(script.Parent.Parent.Core.themeManager).checkTheme
 
 local Types = script.Parent.Parent.Types
 
@@ -38,31 +40,33 @@ function Button(props: Types.ButtonProps): Child
 		Name = props.Name or "Button",
 		Position = props.Position or UDim2.fromScale(position.x, position.y),
 		Size = props.Size or size,
+		Parent = props.Parent,
 		LayoutOrder = props.LayoutOrder,
 		AnchorPoint = anchorPoint,
 		AutomaticSize = props.AutomaticSize,
 		ZIndex = props.ZIndex,
 
-		FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json"),
-		TextColor3 = Basics.Button.TextColor,
-		TextScaled = true,
-		TextWrapped = true,
+		FontFace = checkTheme(props.FontFace) or Basics.Button.Font,
+		TextColor3 = checkTheme(props.TextColor) or Basics.Button.TextColor,
+		TextScaled = props.TextScaled or true,
+		TextSize = props.TextSize,
+		TextWrapped = props.TextWrapped or true,
 		Text = props.Text,
 
 		BackgroundColor3 = Spring(
 			Computed(function()
-				local baseColour = Basics.Button.Bg
+				local baseColor = checkTheme(props.BackgroundColor) or checkTheme(props.Bg) or Basics.Button.Bg
 				if props.Disabled:get() then
-					baseColour = baseColour:Lerp(Color3.fromHex("CCCCCC"), 0.7)
-					return baseColour
+					baseColor = baseColor:Lerp(Color3.fromHex("CCCCCC"), 0.7)
+					return baseColor
 				else
 					-- darken/lighten when hovered or held down
 					if isHeldDown:get() then
-						baseColour = baseColour:Lerp(Color3.new(0, 0, 0), 0.25)
+						baseColor = baseColor:Lerp(Color3.new(0, 0, 0), 0.25)
 					elseif isHovering:get() then
-						baseColour = baseColour:Lerp(Color3.new(1, 1, 1), 0.25)
+						baseColor = baseColor:Lerp(Color3.new(1, 1, 1), 0.25)
 					end
-					return baseColour
+					return baseColor
 				end
 			end),
 			20
