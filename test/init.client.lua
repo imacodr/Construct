@@ -14,6 +14,7 @@ local HStack = Components.HStack
 local VStack = Components.VStack
 local Box = Components.Box
 local Text = Components.Text
+local Heading = Components.Heading
 local Button = Components.Button
 local IconButton = Components.IconButton
 

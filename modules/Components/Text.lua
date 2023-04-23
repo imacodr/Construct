@@ -44,6 +44,7 @@ function Text(props: Types.TextProps): Child
 		TextColor3 = checkTheme(props.TextColor) or Basics.Text.TextColor,
 		TextScaled = props.TextScaled or true,
 		TextSize = props.TextSize,
+		RichText = props.RichText or true,
 		TextWrapped = props.TextWrapped or true,
 		Text = props.Text,
 

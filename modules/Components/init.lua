@@ -7,6 +7,7 @@
 
 local PodKitComponents = {
 	Box = require(script.Box),
+	Heading = require(script.Heading),
 	Text = require(script.Text),
 	Button = require(script.Button),
 	IconButton = require(script.IconButton),
