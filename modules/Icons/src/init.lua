@@ -5,6 +5,8 @@
     This file is the entry point for the PodKit Icons module.
 --]]
 
-local PodIcons = {}
+local PodIcons = {
+	Lucide = require(script.LucideIcons),
+}
 
 return PodIcons
