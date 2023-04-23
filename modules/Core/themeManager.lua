@@ -25,6 +25,7 @@ function extendTheme(theme: Types.ThemeProps)
 end
 
 -- TODO: Add support for nested theme values
+-- e.g. "Button.Bg" -> _G.PODKIT_THEME.Button.Bg
 
 function checkTheme(value: string)
 	if typeof(value) ~= "string" then
