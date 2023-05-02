@@ -1,0 +1,23 @@
+{
+  "name": "podkit",
+  "tree": {
+    "$className": "DataModel",
+
+    "ReplicatedStorage": {
+      "Packages": {
+        "$path": "Packages",
+        "PodKit": {
+          "$path": "modules"
+        }
+      }
+    },
+
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "PodKitTest": {
+          "$path": "test"
+        }
+      }
+    }
+  }
+}

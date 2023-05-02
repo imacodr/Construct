@@ -14,6 +14,7 @@ local HStack = Components.HStack
 local VStack = Components.VStack
 local Box = Components.Box
 local Text = Components.Text
+local Toast = Components.Toast
 local Heading = Components.Heading
 local Button = Components.Button
 local IconButton = Components.IconButton
@@ -30,6 +31,13 @@ extendTheme({
 })
 
 local function App()
+	New("ScreenGui")({
+		Name = "PodKitToast",
+		Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui"),
+		[Children] = {
+			Toast({}),
+		},
+	})
 	return Provider({
 		Id = "App",
 		[Children] = {

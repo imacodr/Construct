@@ -40,13 +40,15 @@ function Text(props: Types.TextProps): Child
 		ZIndex = props.ZIndex,
 		Parent = props.Parent,
 
-		FontFace = checkTheme(props.FontFace) or Basics.Text.Font,
+		FontFace = checkTheme(props.Font) or Basics.Text.Font,
 		TextColor3 = checkTheme(props.TextColor) or Basics.Text.TextColor,
 		TextScaled = props.TextScaled or true,
 		TextSize = props.TextSize,
 		RichText = props.RichText or true,
 		TextWrapped = props.TextWrapped or true,
 		Text = props.Text,
+		TextXAlignment = props.TextXAlignment or Enum.TextXAlignment.Left,
+		TextYAlignment = props.TextYAlignment or Enum.TextYAlignment.Center,
 
 		BackgroundColor3 = checkTheme(props.BackgroundColor) or checkTheme(props.Bg) or Basics.Text.Bg,
 		BackgroundTransparency = props.BackgroundTransparency or 1,

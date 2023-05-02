@@ -52,6 +52,8 @@ function Button(props: Types.ButtonProps): Child
 		TextSize = props.TextSize,
 		TextWrapped = props.TextWrapped or true,
 		Text = props.Text,
+		TextXAlignment = props.TextXAlignment or Enum.TextXAlignment.Center,
+		TextYAlignment = props.TextYAlignment or Enum.TextYAlignment.Center,
 
 		BackgroundColor3 = Spring(
 			Computed(function()

@@ -14,6 +14,7 @@ local PodKitComponents = {
 	Stack = require(script.Stack).Stack,
 	HStack = require(script.Stack).Stack,
 	VStack = require(script.Stack).VStack,
+	Toast = require(script.Toast),
 }
 
 return PodKitComponents
