@@ -16,7 +16,7 @@ local IconButton = require(script.Parent.IconButton)
 local Types = script.Parent.Parent.Types
 
 local Basics = require(script.Parent.Parent.Utils.Basics)
-local checkTheme = require(script.Parent.Parent.Core.themeManager).checkTheme
+local checkTheme = require(script.Parent.Parent.Core.ThemeManager).checkTheme
 
 function Toast(props: Types.ToastProps): Child
 	return Box({

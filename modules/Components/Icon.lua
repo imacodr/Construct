@@ -10,7 +10,7 @@ local Spring = Fusion.Spring
 
 local Utils = require(script.Parent.Parent.Utils)
 
-local checkTheme = require(script.Parent.Parent.Core.themeManager).checkTheme
+local checkTheme = require(script.Parent.Parent.Core.ThemeManager).checkTheme
 
 local Basics = Utils.Basics
 local Constants = Utils.Constants

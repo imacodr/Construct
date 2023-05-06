@@ -7,7 +7,7 @@
 
 local PodKitCore = {
 	PodKitProvider = require(script.KitProvider),
-	extendTheme = require(script.themeManager).extendTheme,
+	extendTheme = require(script.ThemeManager).extendTheme,
 	Cool = require(script.Cool),
 	Fusion = require(script.Parent.Parent.Fusion),
 }

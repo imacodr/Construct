@@ -8,9 +8,12 @@ local OnEvent = Fusion.OnEvent
 local Computed = Fusion.Computed
 local Spring = Fusion.Spring
 
-local Basics = _G.PODKIT_THEME
+local Basics = require(script.Parent.Parent.Utils).Constants.THEME_VARIABLE
 
-local checkTheme = require(script.Parent.Parent.Core.themeManager).checkTheme
+local checkPosition = require(script.Parent.Parent.Utils.CheckConfig).checkPosition
+local checkSize = require(script.Parent.Parent.Utils.CheckConfig).checkSize
+
+local checkTheme = require(script.Parent.Parent.Core.ThemeManager).checkTheme
 
 local Types = script.Parent.Parent.Types
 
@@ -24,25 +27,16 @@ function Button(props: Types.ButtonProps): Child
 	local isHovering = Value(false)
 	local isHeldDown = Value(false)
 
-	local anchorPoint = props.AnchorPoint
-
-	local position = Basics.Positions[props.PrePosition] or {
-		x = 0,
-		y = 0,
-	}
-	local size = Basics.Button.Sizes[props.PreSize] or UDim2.fromScale(0.2, 0.15)
-
-	if props.PrePosition ~= nil and props.AnchorPoint == nil then
-		anchorPoint = Vector2.new(position.x, position.y)
-	end
+	local size = checkSize("Button", props.PreSize)
+	local position = checkPosition(props)
 
 	return New("TextButton")({
 		Name = props.Name or "Button",
-		Position = props.Position or UDim2.fromScale(position.x, position.y),
+		Position = props.Position or position.Position,
 		Size = props.Size or size,
 		Parent = props.Parent,
 		LayoutOrder = props.LayoutOrder,
-		AnchorPoint = anchorPoint,
+		AnchorPoint = position.AnchorPoint,
 		AutomaticSize = props.AutomaticSize,
 		ZIndex = props.ZIndex,
 

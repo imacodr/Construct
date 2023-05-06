@@ -8,6 +8,7 @@
 local PodKitUtils = {
 	Basics = require(script.Basics),
 	Constants = require(script.Constants),
+	CheckConfig = require(script.CheckConfig),
 }
 
 return PodKitUtils

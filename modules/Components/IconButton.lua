@@ -10,10 +10,12 @@ local Spring = Fusion.Spring
 
 local Utils = require(script.Parent.Parent.Utils)
 
-local checkTheme = require(script.Parent.Parent.Core.themeManager).checkTheme
+local checkTheme = require(script.Parent.Parent.Core.ThemeManager).checkTheme
 
-local Basics = Utils.Basics
-local Constants = Utils.Constants
+local Basics = require(script.Parent.Parent.Utils).Constants.THEME_VARIABLE
+local checkPosition = require(script.Parent.Parent.Utils.CheckConfig).checkPosition
+local checkSize = require(script.Parent.Parent.Utils.CheckConfig).checkSize
+local checkAnchorPoint = require(script.Parent.Parent.Utils.CheckConfig).checkAnchorPoint
 
 local Types = script.Parent.Parent.Types
 
@@ -27,22 +29,10 @@ function IconButton(props: Types.IconButtonProps): Child
 	local isHovering = Value(false)
 	local isHeldDown = Value(false)
 
-	local anchorPoint = props.AnchorPoint
-
-	local position = Basics.Positions[props.PrePosition] or {
-		x = 0,
-		y = 0,
-	}
-	local size = Basics.IconButton.Sizes[props.PreSize] or UDim2.fromScale(0.2, 0.15)
-
 	local paddingTop = props.PaddingTop or props.PaddingY or props.Padding or UDim.new(0.5, 0)
 	local paddingBottom = props.PaddingBottom or props.PaddingY or props.Padding or UDim.new(0.5, 0)
 	local paddingLeft = props.PaddingLeft or props.PaddingX or props.Padding or UDim.new(0.5, 0)
 	local paddingRight = props.PaddingRight or props.PaddingX or props.Padding or UDim.new(0.5, 0)
-
-	if props.PrePosition ~= nil and props.AnchorPoint == nil then
-		anchorPoint = Vector2.new(position.x, position.y)
-	end
 
 	local transparency = 0
 	if props.Variant == "ghost" then
@@ -51,16 +41,16 @@ function IconButton(props: Types.IconButtonProps): Child
 
 	return New("ImageButton")({
 		Name = props.Name or "IconButton",
-		Position = props.Position or UDim2.fromScale(position.x, position.y),
-		Size = props.Size or size,
+		Position = props.Position or checkPosition(props).Position,
+		Size = props.Size or checkSize("IconButton", props.PreSize),
 		LayoutOrder = props.LayoutOrder,
-		AnchorPoint = anchorPoint,
+		AnchorPoint = checkAnchorPoint(props) or checkPosition(props).AnchorPoint,
 		AutomaticSize = props.AutomaticSize,
 		ZIndex = props.ZIndex,
 		Parent = props.Parent,
 		BackgroundTransparency = transparency,
 
-		Image = props.Icon or Constants.NO_ICON_URL,
+		Image = props.Icon or Utils.Constants.NO_ICON_URL,
 		ImageColor3 = checkTheme(props.IconColor) or checkTheme(props.IconColour) or Basics.IconButton.IconColor,
 
 		BackgroundColor3 = Spring(
