@@ -1,6 +1,8 @@
-# PodIcons - PodKit extension module
+![DestructCons Banner](./assets/banner.png)
 
-This provides a series of Icons for you to use in your PodKit code.
+# DestructCons - Construct extension module
+
+This provides a series of Icons for you to use in your Construct code.
 
 Supports IconButton and Icon as well as any ImageLabel.
 

@@ -20,7 +20,7 @@ local DefaultThemes = {
 export type Theme = {}
 
 export type KitProviderProps = {
-	Theme: Theme,
+	Id: string,
 	_override: {
 		ResetOnSpawn: boolean?,
 		ZIndexBehavior: Enum.ZIndexBehavior?,

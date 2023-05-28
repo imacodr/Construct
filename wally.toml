@@ -1,5 +1,6 @@
 [package]
-name = "imacodr/PodKit"
+name = "imacodr/Construct"
+description = "A UI Framework for Roblox based on Fusion."
 version = "0.1.0"
 authors = [
     "Sam P <me@imacodr.com>"
@@ -12,4 +13,3 @@ exclude = [
 
 [dependencies]
 Fusion = "elttob/fusion@0.2.0"
-Koute = "koterahq/koute@1.0.3"

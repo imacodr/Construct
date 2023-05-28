@@ -1,6 +1,6 @@
 local NO_ICON_URL = "rbxassetid://13210253904"
 
-local THEME_VARIABLE = _G.PODKIT_THEME
+local THEME_VARIABLE = _G.CONSTRUCT_THEME
 
 return {
 	NO_ICON_URL = NO_ICON_URL,

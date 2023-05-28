@@ -1,5 +1,5 @@
 return {
-	name = "PodKit Flipbook",
+	name = "Construct Flipbook",
 	storyRoots = {
 		script.Parent.Flipbook,
 	},

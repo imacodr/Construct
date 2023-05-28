@@ -1,5 +1,6 @@
 [package]
-name = "imacodr/PodIcons"
+name = "imacodr/DestructCons"
+description = "Collection of Icons to use with the Construct library"
 version = "0.1.0"
 authors = [
     "Sam P <me@imacodr.com>"

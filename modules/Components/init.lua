@@ -1,11 +1,11 @@
 --[[
-    PodKit - A UI Framework based on Fusion.
+    Construct - A UI Framework based on Fusion.
 		~Components - A collection of components that can be used to build a UI.
 
-	This file is the entry point for the PodKit Components module.
+	This file is the entry point for the Construct Components module.
 --]]
 
-local PodKitComponents = {
+local ConstructComponents = {
 	Box = require(script.Box),
 	Heading = require(script.Heading),
 	Text = require(script.Text),
@@ -17,4 +17,4 @@ local PodKitComponents = {
 	Toast = require(script.Toast),
 }
 
-return PodKitComponents
+return ConstructComponents

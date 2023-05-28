@@ -10,21 +10,25 @@ local Types = script.Parent.Parent.Types
 function KitProvider(props: Types.KitProviderProps)
 	local player = game.Players.LocalPlayer
 
-	local resetOnSpawn = (props._override and props._override.resetOnSpawn) or false
-	local zIndex = (props._override and props._override.ZIndexBehavior) or Enum.ZIndexBehavior.Sibling
-	local guiInset = (props._override and props._override.IgnoreGuiInset) or true
-
 	local GuiType = props.GuiType or "ScreenGui"
 
-	return New(GuiType)({
-		Name = "PodKitBuilder",
-		Parent = player:WaitForChild("PlayerGui"),
-		ResetOnSpawn = resetOnSpawn,
-		ZIndexBehavior = zIndex,
-		IgnoreGuiInset = guiInset,
-		props._override,
-		[Children] = props[Children],
-	})
+	local children = props[Children]
+
+	props[Children] = {
+		New("Frame")({
+			Name = "ConstructPortal",
+			BackgroundTransparency = 1,
+			Size = UDim2.fromScale(1, 1),
+		}),
+		children,
+	}
+
+	props.Name = "Construct_" .. props.Id or "ConstructBuilder"
+	props.Parent = props.Parent or player:WaitForChild("PlayerGui")
+	props.Id = nil
+	props.GuiType = nil
+
+	return New(GuiType)(props)
 end
 
 return KitProvider

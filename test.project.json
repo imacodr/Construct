@@ -1,12 +1,12 @@
 {
-  "name": "podkit",
+  "name": "construct-test",
   "tree": {
     "$className": "DataModel",
 
     "ReplicatedStorage": {
       "Packages": {
         "$path": "Packages",
-        "PodKit": {
+        "Construct": {
           "$path": "modules"
         }
       }
@@ -14,7 +14,7 @@
 
     "StarterPlayer": {
       "StarterPlayerScripts": {
-        "PodKitTest": {
+        "ConstructTest": {
           "$path": "test"
         }
       }

@@ -1,14 +1,14 @@
 --[[
-    PodKit - A UI Framework based on Fusion.
+    Construct - A UI Framework based on Fusion.
 	   ~Utils - A collection of utilities that can be used to build a UI.
 
-	This file is the entry point for the PodKit Utils module.
+	This file is the entry point for the Construct Utils module.
 --]]
 
-local PodKitUtils = {
+local ConstructUtils = {
 	Basics = require(script.Basics),
 	Constants = require(script.Constants),
 	CheckConfig = require(script.CheckConfig),
 }
 
-return PodKitUtils
+return ConstructUtils

@@ -7,38 +7,54 @@ local Basics = require(script.Parent.Parent.Utils.Basics)
 
 local Types = script.Parent.Parent.Types
 
-_G.PODKIT_THEME = Basics
+_G.CONSTRUCT_THEME = Basics
 
-function extendTheme(theme: Types.ThemeProps)
+function extendTheme(theme)
 	local newTheme = {}
 
-	-- Mege the provided theme with _G.PODKIT_THEME
-	for key, value in pairs(_G.PODKIT_THEME) do
+	-- Merge the provided theme with _G.CONSTRUCT_THEME
+	for key, value in pairs(_G.CONSTRUCT_THEME) do
 		newTheme[key] = value
 	end
 
-	for key, value in pairs(theme) do
-		newTheme[key] = value
+	-- Helper function to merge nested tables
+	local function mergeTables(destination, source)
+		for key, value in pairs(source) do
+			if type(value) == "table" then
+				-- If the value is a table, recursively merge it
+				destination[key] = destination[key] or {}
+				mergeTables(destination[key], value)
+			else
+				destination[key] = value
+			end
+		end
 	end
 
-	_G.PODKIT_THEME = newTheme
+	-- Merge the provided theme with the existing theme, handling nested tables
+	mergeTables(newTheme, theme)
+
+	_G.CONSTRUCT_THEME = newTheme
 end
-
--- TODO: Add support for nested theme values
--- e.g. "Button.Bg" -> _G.PODKIT_THEME.Button.Bg
 
 function checkTheme(value: string)
 	if typeof(value) ~= "string" then
 		return value
 	end
 
-	if _G.PODKIT_THEME[value] then
-		return _G.PODKIT_THEME[value]
-	else
-		return nil
+	local themeValue = _G.CONSTRUCT_THEME -- Start with the root theme table
+
+	-- Split the value by periods to handle nested values
+	local keys = string.split(value, ".")
+
+	-- Traverse the nested keys to access the desired theme value
+	for _, key in ipairs(keys) do
+		themeValue = themeValue[key]
+		if not themeValue then
+			return nil -- Return nil if any key is not found
+		end
 	end
 
-	return value
+	return themeValue
 end
 
 return { checkTheme = checkTheme, extendTheme = extendTheme }
