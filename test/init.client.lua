@@ -19,6 +19,7 @@ local Toast = Components.Toast
 local Heading = Components.Heading
 local Button = Components.Button
 local IconButton = Components.IconButton
+local Icon = Components.Icon
 
 local New = Fusion.New
 local Value = Fusion.Value
@@ -33,6 +34,14 @@ extendTheme({
 	Bg = Color3.fromHex("0D0C1D"),
 	IconBg = Color3.fromHex("12172B"),
 	Destino = Color3.fromHex("EE9D00"),
+	Cool = {
+		Red = Color3.fromHex("#FF0000"),
+		Blue = Color3.fromHex("#0000FF"),
+		Green = Color3.fromHex("#00FF00"),
+		Orange = Color3.fromHex("#FFA500"),
+		White = Color3.fromHex("#FFFFFF"),
+		Black = Color3.fromHex("#000000"),
+	},
 	Test = {
 		Cool = Color3.fromHex("#EE9D00"),
 	},
@@ -111,12 +120,76 @@ local function App()
 				BackgroundColor = "Primary",
 				PreSize = "full",
 				[Children] = {
-					Text({
+					HStack({
+						PrePosition = "topLeft",
+						Size = UDim2.fromScale(0.4, 0.07),
+						VerticalAlignment = Enum.VerticalAlignment.Center,
+						[Children] = {
+							Icon({
+								Name = "Clock",
+								Icon = DestructCons.Lucide.clock4,
+								Color = "Cool.Black",
+								Size = UDim2.fromScale(0.2, 0.5),
+								PrePosition = "topLeft",
+							}),
+							Text({
+								PrePosition = "topLeft",
+								Size = UDim2.fromScale(0.6, 0.4),
+								Text = "1:30 PM",
+								TextColor = "Cool.Black",
+								Font = Font.fromName("Inter", Enum.FontWeight.SemiBold),
+							}),
+						},
+					}),
+					HStack({
 						PrePosition = "topCenter",
-						Size = UDim2.fromScale(1, 0.2),
-						Text = "PodSCI",
-						TextColor = "Test.Cool",
-						Font = Font.fromEnum(Enum.Font.Gotham),
+						Size = UDim2.fromScale(0.3, 0.07),
+						VerticalAlignment = Enum.VerticalAlignment.Center,
+						[Children] = {
+							Icon({
+								Icon = "rbxassetid://12603812143",
+								Color = "Cool.Black",
+								Size = UDim2.fromScale(0.3, 0.6),
+								PrePosition = "topCenter",
+							}),
+						},
+					}),
+					HStack({
+						PrePosition = "topRight",
+						Size = UDim2.fromScale(0.4, 0.07),
+						VerticalAlignment = Enum.VerticalAlignment.Center,
+						[Children] = {
+							Text({
+								Name = "1",
+								PrePosition = "topRight",
+								Size = UDim2.fromScale(0.6, 0.4),
+								Text = "5/28/2023",
+								TextColor = "Cool.Black",
+								TextXAlignment = Enum.TextXAlignment.Right,
+								Font = Font.fromName("Inter", Enum.FontWeight.SemiBold),
+							}),
+							Icon({
+								Name = "2",
+								Icon = DestructCons.Lucide.calendar,
+								Color = "Cool.Black",
+								Size = UDim2.fromScale(0.2, 0.5),
+								PrePosition = "topRight",
+							}),
+						},
+					}),
+					Box({
+						PrePosition = "center",
+						PreSize = "xl",
+						BackgroundColor = "Cool.Black",
+						[Children] = {
+							Text({
+								PrePosition = "center",
+								Size = UDim2.fromScale(0.8, 0.8),
+								Text = "Hello, World!",
+								TextColor = "Cool.White",
+								Font = Font.fromName("Inter", Enum.FontWeight.SemiBold),
+							}),
+						},
 					}),
 					Button({
 						PrePosition = "bottomCenter",

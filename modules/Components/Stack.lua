@@ -16,8 +16,8 @@ local Basics = require(script.Parent.Parent.Utils.Basics)
 
 function Stack(props: Types.StackProps): Child
 	local position = props.PrePosition
-	local horizontalAlignment = props.HorizontalAlignment or Enum.HorizontalAlignment.Center
-	local verticalAlignment = props.VerticalAlignment or Enum.VerticalAlignment.Center
+	local horizontalAlignment = Enum.HorizontalAlignment.Center
+	local verticalAlignment = Enum.VerticalAlignment.Center
 
 	if position then
 		if position == "center" then
@@ -48,8 +48,8 @@ function Stack(props: Types.StackProps): Child
 	props[Children] = {
 		New("UIListLayout")({
 			FillDirection = props.Direction or Enum.FillDirection.Horizontal,
-			HorizontalAlignment = horizontalAlignment,
-			VerticalAlignment = verticalAlignment,
+			HorizontalAlignment = props.HorizontalAlignment or horizontalAlignment,
+			VerticalAlignment = props.VerticalAlignment or verticalAlignment,
 			Padding = props.Spacing or UDim.new(0.01, 0),
 		}),
 		children,

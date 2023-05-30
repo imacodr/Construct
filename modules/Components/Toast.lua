@@ -18,6 +18,10 @@ local Types = script.Parent.Parent.Types
 local Basics = require(script.Parent.Parent.Utils.Basics)
 local checkTheme = require(script.Parent.Parent.Core.ThemeManager).checkTheme
 
+--[[
+	Toast is still a work in progress. It is not yet implemented in the library.
+--]]
+
 function Toast(props: Types.ToastProps): Child
 	return Box({
 		Name = props.Id or "Toast",

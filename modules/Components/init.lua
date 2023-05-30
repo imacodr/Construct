@@ -10,11 +10,11 @@ local ConstructComponents = {
 	Heading = require(script.Heading),
 	Text = require(script.Text),
 	Button = require(script.Button),
+	Icon = require(script.Icon),
 	IconButton = require(script.IconButton),
 	Stack = require(script.Stack).Stack,
 	HStack = require(script.Stack).Stack,
 	VStack = require(script.Stack).VStack,
-	Toast = require(script.Toast),
 }
 
 return ConstructComponents
