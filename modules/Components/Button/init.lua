@@ -12,6 +12,7 @@ local Basics = require(script.Parent.Parent.Utils).Constants.THEME_VARIABLE
 
 local checkPosition = require(script.Parent.Parent.Utils.CheckConfig).checkPosition
 local checkSize = require(script.Parent.Parent.Utils.CheckConfig).checkSize
+local checkAnchorPoint = require(script.Parent.Parent.Utils.CheckConfig).checkAnchorPoint
 
 local checkTheme = require(script.Parent.Parent.Core.ThemeManager).checkTheme
 
@@ -30,17 +31,22 @@ function Button(props: Types.ButtonProps): Child
 	local size = checkSize("Button", props.PreSize)
 	local position = checkPosition(props)
 
+	local paddingTop = props.PaddingTop or props.PaddingY or props.Padding or UDim.new(0.1, 0)
+	local paddingBottom = props.PaddingBottom or props.PaddingY or props.Padding or UDim.new(0.1, 0)
+	local paddingLeft = props.PaddingLeft or props.PaddingX or props.Padding or UDim.new(0.1, 0)
+	local paddingRight = props.PaddingRight or props.PaddingX or props.Padding or UDim.new(0.1, 0)
+
 	return New("TextButton")({
 		Name = props.Name or "Button",
 		Position = props.Position or position.Position,
 		Size = props.Size or size,
 		Parent = props.Parent,
 		LayoutOrder = props.LayoutOrder,
-		AnchorPoint = position.AnchorPoint,
+		AnchorPoint = checkAnchorPoint(props) or position.AnchorPoint,
 		AutomaticSize = props.AutomaticSize,
 		ZIndex = props.ZIndex,
 
-		FontFace = checkTheme(props.FontFace) or Basics.Button.Font,
+		FontFace = checkTheme(props.Font) or Basics.Button.Font,
 		TextColor3 = checkTheme(props.TextColor) or Basics.Button.TextColor,
 		TextScaled = props.TextScaled or true,
 		TextSize = props.TextSize,
@@ -72,14 +78,13 @@ function Button(props: Types.ButtonProps): Child
 
 		[Children] = {
 			New("UICorner")({
-				CornerRadius = UDim.new(0.3, 0),
+				CornerRadius = props.CornerRadius or UDim.new(0.3, 0),
 			}),
 			New("UIPadding")({
-				Name = "UIPadding",
-				PaddingBottom = UDim.new(0.1, 0),
-				PaddingLeft = UDim.new(0.1, 0),
-				PaddingRight = UDim.new(0.1, 0),
-				PaddingTop = UDim.new(0.1, 0),
+				PaddingTop = paddingTop,
+				PaddingBottom = paddingBottom,
+				PaddingLeft = paddingLeft,
+				PaddingRight = paddingRight,
 			}),
 			props[Children],
 		},

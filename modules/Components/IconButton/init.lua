@@ -26,13 +26,16 @@ function IconButton(props: Types.IconButtonProps): Child
 		props.Disabled = Value(props.Disabled)
 	end
 
+	local size = checkSize("IconButton", props.PreSize)
+	local position = checkPosition(props)
+
 	local isHovering = Value(false)
 	local isHeldDown = Value(false)
 
-	local paddingTop = props.PaddingTop or props.PaddingY or props.Padding or UDim.new(0.5, 0)
-	local paddingBottom = props.PaddingBottom or props.PaddingY or props.Padding or UDim.new(0.5, 0)
-	local paddingLeft = props.PaddingLeft or props.PaddingX or props.Padding or UDim.new(0.5, 0)
-	local paddingRight = props.PaddingRight or props.PaddingX or props.Padding or UDim.new(0.5, 0)
+	local paddingTop = props.PaddingTop or props.PaddingY or props.Padding or UDim.new(0, 0)
+	local paddingBottom = props.PaddingBottom or props.PaddingY or props.Padding or UDim.new(0, 0)
+	local paddingLeft = props.PaddingLeft or props.PaddingX or props.Padding or UDim.new(0, 0)
+	local paddingRight = props.PaddingRight or props.PaddingX or props.Padding or UDim.new(0, 0)
 
 	local transparency = 0
 	if props.Variant == "ghost" then
@@ -41,14 +44,14 @@ function IconButton(props: Types.IconButtonProps): Child
 
 	return New("ImageButton")({
 		Name = props.Name or "IconButton",
-		Position = props.Position or checkPosition(props).Position,
-		Size = props.Size or checkSize("IconButton", props.PreSize),
+		Position = props.Position or position.Position,
+		Size = props.Size or size,
 		LayoutOrder = props.LayoutOrder,
-		AnchorPoint = checkAnchorPoint(props) or checkPosition(props).AnchorPoint,
+		AnchorPoint = checkAnchorPoint(props) or position.AnchorPoint,
 		AutomaticSize = props.AutomaticSize,
 		ZIndex = props.ZIndex,
 		Parent = props.Parent,
-		BackgroundTransparency = transparency,
+		BackgroundTransparency = props.BackgroundTransparency or transparency,
 
 		Image = props.Icon or Utils.Constants.NO_ICON_URL,
 		ImageColor3 = checkTheme(props.IconColor) or checkTheme(props.IconColour) or Basics.IconButton.IconColor,

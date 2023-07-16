@@ -1,4 +1,4 @@
-local Button = require(script.Parent.Parent.Button)
+local Button = require(script.Parent)
 
 return {
 	summary = "A button component",

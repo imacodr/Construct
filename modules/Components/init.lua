@@ -7,9 +7,9 @@
 
 local ConstructComponents = {
 	Box = require(script.Box),
-	Heading = require(script.Heading),
 	Text = require(script.Text),
 	Button = require(script.Button),
+	Image = require(script.Image),
 	Icon = require(script.Icon),
 	IconButton = require(script.IconButton),
 	Stack = require(script.Stack).Stack,

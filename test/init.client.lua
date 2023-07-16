@@ -4,7 +4,7 @@ local Construct = game.ReplicatedStorage.Packages.Construct
 
 local Core = require(Construct.Core)
 local Components = require(Construct.Components)
-local DestructCons = require(Construct.DestructCons)
+local DestructCons = require(Construct.destructcons)
 
 local Provider = Core.Provider
 local Children = Fusion.Children

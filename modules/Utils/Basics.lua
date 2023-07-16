@@ -47,12 +47,12 @@ return {
 		Bg = Color3.fromHex("#000000"),
 		IconColor = Color3.fromHex("#FFFFFF"),
 		Sizes = {
-			xsm = UDim2.fromScale(0.025, 0.025),
-			sm = UDim2.fromScale(0.05, 0.05),
-			md = UDim2.fromScale(0.1, 0.1),
-			lg = UDim2.fromScale(0.2, 0.2),
-			xl = UDim2.fromScale(0.3, 0.3),
-			xxl = UDim2.fromScale(0.4, 0.4),
+			xsm = UDim2.fromScale(0.025, 0.05),
+			sm = UDim2.fromScale(0.05, 0.15),
+			md = UDim2.fromScale(0.1, 0.3),
+			lg = UDim2.fromScale(0.2, 0.4),
+			xl = UDim2.fromScale(0.3, 0.5),
+			xxl = UDim2.fromScale(0.4, 0.6),
 			full = UDim2.fromScale(1, 1),
 		},
 	},
@@ -60,6 +60,20 @@ return {
 	Box = {
 		Bg = Color3.fromHex("#FFFFFF"),
 		TextColor = Color3.fromHex("#000000"),
+		Sizes = {
+			xsm = UDim2.fromScale(0.025, 0.0125),
+			sm = UDim2.fromScale(0.05, 0.025),
+			md = UDim2.fromScale(0.1, 0.05),
+			lg = UDim2.fromScale(0.2, 0.1),
+			xl = UDim2.fromScale(0.3, 0.15),
+			xxl = UDim2.fromScale(0.4, 0.2),
+			full = UDim2.fromScale(1, 1),
+		},
+	},
+
+	Image = {
+		Bg = Color3.fromHex("#000000"),
+		ImageColor = Color3.fromHex("#FFFFFF"),
 		Sizes = {
 			xsm = UDim2.fromScale(0.025, 0.0125),
 			sm = UDim2.fromScale(0.05, 0.025),

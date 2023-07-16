@@ -2,8 +2,8 @@ local Packages = script.Parent.Parent.Parent.Parent
 
 local Children = require(Packages.Fusion).Children
 
-local Stack = require(script.Parent.Parent.Stack).Stack
-local Button = require(script.Parent.Parent.Button)
+local Stack = require(script.Parent).Stack
+local Button = require(script.Parent.Parent.Parent.Button)
 
 return {
 	summary = "A basic frame",

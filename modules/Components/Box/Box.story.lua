@@ -1,4 +1,4 @@
-local Box = require(script.Parent.Parent.Box)
+local Box = require(script.Parent)
 
 return {
 	summary = "A basic frame",
