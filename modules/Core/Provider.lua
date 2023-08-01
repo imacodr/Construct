@@ -7,7 +7,7 @@ local New = Fusion.New
 
 local Types = script.Parent.Parent.Types
 
-function KitProvider(props: Types.KitProviderProps)
+function Provider(props: Types.KitProviderProps)
 	local player = game.Players.LocalPlayer
 
 	local GuiType = props.GuiType or "ScreenGui"
@@ -23,12 +23,17 @@ function KitProvider(props: Types.KitProviderProps)
 		children,
 	}
 
-	props.Name = "Construct_" .. props.Id or "ConstructBuilder"
+	if props.Id ~= nil then
+		props.Name = "Construct_" .. props.Id
+	else
+		props.Name = "ConstructBuilder"
+	end
 	props.Parent = props.Parent or player:WaitForChild("PlayerGui")
+	props.IgnoreGuiInset = props.IgnoreGuiInset or true
 	props.Id = nil
 	props.GuiType = nil
 
 	return New(GuiType)(props)
 end
 
-return KitProvider
+return Provider

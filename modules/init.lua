@@ -1,5 +1,5 @@
 --[[
-    Construct - A UI Framework based on Fusion.
+    Construct - The ultimate component library for Fusion with next level theming capabilities.
 		~Construct - A collection of modules that can be used to build a UI.
 
 	This file is the entry point for the Construct module.
@@ -10,6 +10,7 @@
 local Construct = {
 	Core = require(script.Core),
 	Components = require(script.Components),
+	Import = require(script.Import),
 }
 
 return Construct

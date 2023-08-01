@@ -1,5 +1,5 @@
 --[[
-    Construct - A UI Framework based on Fusion.
+    Construct - The ultimate component library for Fusion with next level theming capabilities.
 		~Components - A collection of components that can be used to build a UI.
 
 	This file is the entry point for the Construct Components module.

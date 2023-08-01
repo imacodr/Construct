@@ -1,12 +1,7 @@
 local Packages = script.Parent.Parent.Parent
 local Fusion = require(Packages.Fusion)
 
-local New = Fusion.New
-local Children = Fusion.Children
-local Value = Fusion.Value
-local OnEvent = Fusion.OnEvent
-local Computed = Fusion.Computed
-local Spring = Fusion.Spring
+local New, Children, Value, OnEvent, Computed, Spring = Fusion.New, Fusion.Children, Fusion.Value, Fusion.OnEvent, Fusion.Computed, Fusion.Spring
 
 local Utils = require(script.Parent.Parent.Utils)
 

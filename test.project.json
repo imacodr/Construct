@@ -15,7 +15,7 @@
     "StarterPlayer": {
       "StarterPlayerScripts": {
         "ConstructTest": {
-          "$path": "test"
+          "$path": "testing"
         }
       }
     }

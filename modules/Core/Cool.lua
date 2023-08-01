@@ -1,8 +1,6 @@
-type CoolProps = {
-	bgColor: string | Color3,
-	textColor: string | Color3,
-}
+-- Soon to be the coolest module to make your components that much cooler
+-- a.k.a Animation Manager & Helper
 
-function Cool(props: CoolProps) end
+function Cool(props) end
 
 return Cool
