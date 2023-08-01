@@ -8,7 +8,7 @@ local New = Fusion.New
 local Box = require(script.Parent.Box)
 local Text = require(script.Parent.Text)
 
-local Types = script.Parent.Parent.Types
+local GlobalTypes = script.Parent.Parent.GlobalTypes
 
 local Basics = require(script.Parent.Parent.Utils.Basics)
 local checkTheme = require(script.Parent.Parent.Core.ThemeManager).checkTheme
@@ -17,7 +17,7 @@ local checkTheme = require(script.Parent.Parent.Core.ThemeManager).checkTheme
 	Tooltip is still a work in progress. It is not yet implemented in the library.
 --]]
 
-function Tooltip(props: Types.TooltipProps): Child
+function Tooltip(props: GlobalTypes.TooltipProps): Child
 	local tooltip = Box({
 		PrePosition = "bottomCenter",
 		Size = UDim2.fromOffset(130, 50),

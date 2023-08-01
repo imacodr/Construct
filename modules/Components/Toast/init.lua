@@ -13,7 +13,7 @@ local Text = require(script.Parent.Text)
 local Icon = require(script.Parent.Icon)
 local IconButton = require(script.Parent.IconButton)
 
-local Types = script.Parent.Parent.Types
+local GlobalTypes = script.Parent.Parent.GlobalTypes
 
 local Basics = require(script.Parent.Parent.Utils.Basics)
 local checkTheme = require(script.Parent.Parent.Core.ThemeManager).checkTheme
@@ -22,7 +22,7 @@ local checkTheme = require(script.Parent.Parent.Core.ThemeManager).checkTheme
 	Toast is still a work in progress. It is not yet implemented in the library.
 --]]
 
-function Toast(props: Types.ToastProps): Child
+function Toast(props: GlobalTypes.ToastProps): Child
 	return Box({
 		Name = props.Id or "Toast",
 		Position = UDim2.fromScale(0.5, 0.95),

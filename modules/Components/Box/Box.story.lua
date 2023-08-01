@@ -1,4 +1,4 @@
-local Box = require(script.Parent)
+local Box = require(game.ReplicatedStorage.Packages.Construct.Components.Box)
 
 return {
 	summary = "A basic frame",

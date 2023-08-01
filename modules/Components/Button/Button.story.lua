@@ -1,4 +1,4 @@
-local Button = require(script.Parent)
+local Button = require(game.ReplicatedStorage.Packages.Construct.Components.Button)
 
 return {
 	summary = "A button component",

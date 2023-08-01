@@ -16,9 +16,9 @@ local checkAnchorPoint = require(script.Parent.Parent.Utils.CheckConfig).checkAn
 
 local checkTheme = require(script.Parent.Parent.Core.ThemeManager).checkTheme
 
-local Types = script.Parent.Parent.Types
+local GlobalTypes = script.Parent.Parent.GlobalTypes
 
-function Button(props: Types.ButtonProps): Child
+function Button(props: GlobalTypes.ButtonProps): Child
 	if props.Disabled == nil then
 		props.Disabled = Value(false)
 	elseif typeof(props.Disabled) == "boolean" then

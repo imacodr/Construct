@@ -8,7 +8,7 @@ local OnEvent = Fusion.OnEvent
 local Computed = Fusion.Computed
 local Spring = Fusion.Spring
 
-local Types = script.Parent.Parent.Types
+local GlobalTypes = script.Parent.Parent.GlobalTypes
 
 local Basics = require(script.Parent.Parent.Utils.Basics)
 local checkTheme = require(script.Parent.Parent.Core.ThemeManager).checkTheme
@@ -17,7 +17,7 @@ local checkPosition = require(script.Parent.Parent.Utils.CheckConfig).checkPosit
 local checkSize = require(script.Parent.Parent.Utils.CheckConfig).checkSize
 local checkAnchorPoint = require(script.Parent.Parent.Utils.CheckConfig).checkAnchorPoint
 
-function Text(props: Types.TextProps): Child
+function Text(props: GlobalTypes.TextProps): Child
 	local size = checkSize("Box", props.PreSize)
 	local position = checkPosition(props)
 

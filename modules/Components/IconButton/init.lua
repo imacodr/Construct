@@ -17,9 +17,9 @@ local checkPosition = require(script.Parent.Parent.Utils.CheckConfig).checkPosit
 local checkSize = require(script.Parent.Parent.Utils.CheckConfig).checkSize
 local checkAnchorPoint = require(script.Parent.Parent.Utils.CheckConfig).checkAnchorPoint
 
-local Types = script.Parent.Parent.Types
+local GlobalTypes = script.Parent.Parent.GlobalTypes
 
-function IconButton(props: Types.IconButtonProps): Child
+function IconButton(props: GlobalTypes.IconButtonProps): Child
 	if props.Disabled == nil then
 		props.Disabled = Value(false)
 	elseif typeof(props.Disabled) == "boolean" then

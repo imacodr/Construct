@@ -5,40 +5,21 @@
     This file is the entry point for the Construct Import module.
 --]]
 
-local function import(componentPath)
-    local prefix = "@"
-    local separator = "/"
-    local componentName = componentPath:split(prefix)[2] -- Extract the component name after "@"
-    local moduleNames = {"Components", "Core", "Utils"}
-    local module = nil
+local function import(modulePath)
+    local root = script.Parent -- Change this to where your root directory is located
 
-    for _, moduleName in ipairs(moduleNames) do
-        local moduleNameWithPrefix = prefix .. moduleName
-        if componentPath:sub(1, #moduleNameWithPrefix) == moduleNameWithPrefix then
-            module = game:GetService("ReplicatedStorage"):FindFirstChild(moduleName)
-            componentPath = componentPath:sub(#moduleNameWithPrefix + #separator + 1)
-            break
+    local path = modulePath:gsub("@", root.Name)
+    local moduleParts = string.split(path, "/")
+    local currentModule = root
+
+    for _, part in ipairs(moduleParts) do
+        currentModule = currentModule:FindFirstChild(part)
+        if not currentModule then
+            error("Module not found: " .. modulePath)
         end
     end
 
-    if not module then
-        error("Invalid component path: " .. componentPath, 2)
-    end
-
-    local paths = componentPath:split(separator) -- Split the remaining path with "/"
-    for _, path in ipairs(paths) do
-        module = module:FindFirstChild(path)
-        if not module then
-            error("Component not found: " .. componentPath, 2)
-        end
-    end
-
-    local component = module:FindFirstChild(componentName)
-    if not component then
-        error("Component not found: " .. componentPath, 2)
-    end
-
-    return require(component)
+    return require(currentModule)
 end
 
 return import

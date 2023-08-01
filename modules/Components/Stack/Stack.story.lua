@@ -2,8 +2,8 @@ local Packages = script.Parent.Parent.Parent.Parent
 
 local Children = require(Packages.Fusion).Children
 
-local Stack = require(script.Parent).Stack
-local Button = require(script.Parent.Parent.Parent.Button)
+local Stack = require(game.ReplicatedStorage.Packages.Construct.Components.Stack)
+local Button = require(game.ReplicatedStorage.Packages.Construct.Components.Button)
 
 return {
 	summary = "A basic frame",

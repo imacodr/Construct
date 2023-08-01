@@ -13,9 +13,9 @@ local checkAnchorPoint = require(script.Parent.Parent.Utils.CheckConfig).checkAn
 local Basics = Utils.Basics
 local Constants = Utils.Constants
 
-local Types = script.Parent.Parent.Types
+local GlobalTypes = script.Parent.Parent.GlobalTypes
 
-function Icon(props: Types.IconProps): Child
+function Icon(props: GlobalTypes.IconProps): Child
 	local size = checkSize("Icon", props.PreSize)
 	local position = checkPosition(props)
 

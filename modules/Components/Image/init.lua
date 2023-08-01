@@ -1,36 +1,32 @@
-local Packages = script.Parent.Parent.Parent
-local Fusion = require(Packages.Fusion)
+--[=[
+    @function Image
+    @within Components
+    This is a component that extends ImageLabel and is used to display images on the screen.
 
-local New = Fusion.New
-local Children = Fusion.Children
-local Value = Fusion.Value
-local OnEvent = Fusion.OnEvent
-local Computed = Fusion.Computed
-local Spring = Fusion.Spring
+    @param props ImageProps -- The properties to create the image component
+    @return Instance -- Returns the generated Image component
+]=]
+
+local Core = script.Parent.Parent.Core
+
+local constructor = require(Core.constructor)
+local checkTheme = require(Core.ThemeManager).checkTheme
 
 local Utils = require(script.Parent.Parent.Utils)
-
-local checkPosition = require(script.Parent.Parent.Utils.CheckConfig).checkPosition
-local checkSize = require(script.Parent.Parent.Utils.CheckConfig).checkSize
-local checkTheme = require(script.Parent.Parent.Core.ThemeManager).checkTheme
-local checkAnchorPoint = require(script.Parent.Parent.Utils.CheckConfig).checkAnchorPoint
 
 local Basics = Utils.Basics
 local Constants = Utils.Constants
 
-local Types = script.Parent.Parent.Types
+local GlobalTypes = script.Parent.Parent.GlobalTypes
 
-local constructor = require(script.Parent.constructor)
 
-type ImageProps = Types.BaseComponents & {
+type ImageProps = GlobalTypes.BaseComponents & {
     BackgroundTransparency: number?,
     Image: string?,
     ImageColor: Color3?,
     ImageColor3: Color3?,
     Transparency: number?,
 }
-
-
 
 function Image(props: ImageProps): ImageLabel
     return constructor("Image", "ImageLabel", {

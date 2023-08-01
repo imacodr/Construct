@@ -70,7 +70,7 @@ return {
 			full = UDim2.fromScale(1, 1),
 		},
 	},
-
+	
 	Image = {
 		Bg = Color3.fromHex("#000000"),
 		ImageColor = Color3.fromHex("#FFFFFF"),
@@ -85,6 +85,21 @@ return {
 		},
 	},
 
+	Factory = {
+		Bg = Color3.fromHex("#FFFFFF"),
+		TextColor = Color3.fromHex("#000000"),
+		ImageColor = Color3.fromHex("#FFFFFF"),
+		Sizes = {
+			xsm = UDim2.fromScale(0.025, 0.0125),
+			sm = UDim2.fromScale(0.05, 0.025),
+			md = UDim2.fromScale(0.1, 0.05),
+			lg = UDim2.fromScale(0.2, 0.1),
+			xl = UDim2.fromScale(0.3, 0.15),
+			xxl = UDim2.fromScale(0.4, 0.2),
+			full = UDim2.fromScale(1, 1),
+		},
+	},
+	
 	Positions = {
 		topRight = { x = 1, y = 0 },
 		topLeft = { x = 0, y = 0 },

@@ -11,6 +11,11 @@ local Construct = {
 	Core = require(script.Core),
 	Components = require(script.Components),
 	Import = require(script.Import),
+	_internal = {
+		Utils = require(script.Utils),
+		FusionPubTypes = require(script.PubTypes),
+		GlobalTypes = require(script.GlobalTypes),
+	}
 }
 
 return Construct

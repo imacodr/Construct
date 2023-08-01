@@ -5,7 +5,7 @@ local Value = Fusion.Value
 
 local Basics = require(script.Parent.Parent.Utils.Basics)
 
-local Types = script.Parent.Parent.Types
+local GlobalTypes = script.Parent.Parent.GlobalTypes
 
 _G.CONSTRUCT_THEME = Basics
 

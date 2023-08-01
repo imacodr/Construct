@@ -8,13 +8,13 @@ local OnEvent = Fusion.OnEvent
 local Computed = Fusion.Computed
 local Spring = Fusion.Spring
 
-local Types = script.Parent.Parent.Types
+local GlobalTypes = script.Parent.Parent.GlobalTypes
 
 local Box = require(script.Parent.Box)
 
 local Basics = require(script.Parent.Parent.Utils.Basics)
 
-function Stack(props: Types.StackProps): Child
+function Stack(props: GlobalTypes.StackProps): Child
 	local position = props.PrePosition
 	local horizontalAlignment = Enum.HorizontalAlignment.Center
 	local verticalAlignment = Enum.VerticalAlignment.Center
@@ -64,7 +64,7 @@ function Stack(props: Types.StackProps): Child
 	return Box(props)
 end
 
-function VStack(props: Types.StackProps): Child
+function VStack(props: GlobalTypes.StackProps): Child
 	if not props.Direction then
 		props.Direction = Enum.FillDirection.Vertical
 	end

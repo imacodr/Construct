@@ -47,6 +47,11 @@ function constructor(componentName: string, class: string, customProps: table, d
         finalProps.PaddingX = nil
         finalProps.Padding = nil
 
+        local backgroundColor = checkTheme(finalProps.BackgroundColor3) or checkTheme(finalProps.BackgroundColor) or checkTheme(finalProps.Bg) or Basics[componentName].Bg
+        finalProps.BackgroundColor3 = nil
+        finalProps.BackgroundColor = nil
+        finalProps.Bg = nil
+
         local children = finalProps[Children]
         finalProps[Children] = nil
     
@@ -59,6 +64,7 @@ function constructor(componentName: string, class: string, customProps: table, d
             Position = finalProps.Position or position.Position,
             Size = finalProps.Size or size,
             AnchorPoint = anchorPoint,
+            BackgroundColor3 = backgroundColor,
 
             [Children] = {
                 New "UIPadding" {
@@ -76,12 +82,6 @@ function constructor(componentName: string, class: string, customProps: table, d
         end
 
         local instance = New (class)(instanceProps)
-        
-        print(finalProps)
-
-        if instance:IsA("GuiObject") then
-            instance.BackgroundColor3 = checkTheme(finalProps.BackgroundColor) or checkTheme(finalProps.Bg) or Basics[componentName].Bg
-        end
 
         return instance
     end
