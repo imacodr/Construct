@@ -4,14 +4,17 @@ local Fusion = require(Packages.Fusion)
 -- Fusion
 local New = Fusion.New
 local Children = Fusion.Children
-local ForPairs = Fusion.ForPairs
+local Computed = Fusion.Computed
 
 local Utils = require(script.Parent.Parent.Utils)
+local CheckConfig = require(script.Parent.Parent.Utils.CheckConfig)
 local Basics = Utils.Basics
 
-local checkPosition = require(script.Parent.Parent.Utils.CheckConfig).checkPosition
-local checkSize = require(script.Parent.Parent.Utils.CheckConfig).checkSize
-local checkAnchorPoint = require(script.Parent.Parent.Utils.CheckConfig).checkAnchorPoint
+local PubTypes = script.Parent.Parent.PubTypes
+
+local checkPosition = CheckConfig.checkPosition
+local checkSize = CheckConfig.checkSize
+local checkAnchorPoint = CheckConfig.checkAnchorPoint
 local checkTheme = require(script.Parent.Parent.Core.ThemeManager).checkTheme
 
 function mergeProps(defaultProps, props)
@@ -26,7 +29,7 @@ function mergeProps(defaultProps, props)
 end
 
 function constructor(componentName: string, class: string, customProps: table, defaultProps: table)
-    return function (props) : Instance
+    return function (props: PubTypes.PropertyTable) : Instance
        local finalProps = mergeProps(defaultProps, props)
         
         local size = checkSize(componentName, finalProps.PreSize)
@@ -35,10 +38,10 @@ function constructor(componentName: string, class: string, customProps: table, d
         finalProps.PrePosition = nil
         local anchorPoint = checkAnchorPoint(finalProps) or position.AnchorPoint
 
-        local paddingTop = finalProps.PaddingTop or finalProps.PaddingY or finalProps.Padding or UDim.new(0, 0)
-        local paddingBottom = finalProps.PaddingBottom or finalProps.PaddingY or finalProps.Padding or UDim.new(0, 0)
-        local paddingLeft = finalProps.PaddingLeft or finalProps.PaddingX or finalProps.Padding or UDim.new(0, 0)
-        local paddingRight = finalProps.PaddingRight or finalProps.PaddingX or finalProps.Padding or UDim.new(0, 0)
+        local paddingTop = finalProps.PaddingTop or finalProps.PaddingY or finalProps.Padding
+        local paddingBottom = finalProps.PaddingBottom or finalProps.PaddingY or finalProps.Padding
+        local paddingLeft = finalProps.PaddingLeft or finalProps.PaddingX or finalProps.Padding
+        local paddingRight = finalProps.PaddingRight or finalProps.PaddingX or finalProps.Padding
         finalProps.PaddingTop = nil
         finalProps.PaddingBottom = nil
         finalProps.PaddingLeft = nil
@@ -47,7 +50,39 @@ function constructor(componentName: string, class: string, customProps: table, d
         finalProps.PaddingX = nil
         finalProps.Padding = nil
 
-        local backgroundColor = checkTheme(finalProps.BackgroundColor3) or checkTheme(finalProps.BackgroundColor) or checkTheme(finalProps.Bg) or Basics[componentName].Bg
+        local cornerRadius
+
+        if typeof(finalProps.CornerRadius) == "number" then
+            cornerRadius = UDim.new(0, finalProps.CornerRadius)
+        elseif typeof(finalProps.CornerRadius) == "UDim" then
+            cornerRadius = finalProps.CornerRadius
+        end
+        finalProps.CornerRadius = nil
+
+        local paddingInstance
+        if paddingTop or paddingBottom or paddingLeft or paddingRight then
+            paddingInstance = New "UIPadding" {
+                PaddingTop = paddingTop,
+                PaddingBottom = paddingBottom,
+                PaddingLeft = paddingLeft,
+                PaddingRight = paddingRight,
+            }
+        end
+
+        local cornerInstance
+        if cornerRadius then
+            cornerInstance = New "UICorner" {
+                CornerRadius = cornerRadius,
+            }
+        end
+     
+
+
+        local backgroundColor = checkTheme(finalProps.BackgroundColor3)
+            or checkTheme(finalProps.BackgroundColor)
+            or checkTheme(finalProps.Bg)
+            or Basics[componentName].Bg
+
         finalProps.BackgroundColor3 = nil
         finalProps.BackgroundColor = nil
         finalProps.Bg = nil
@@ -67,12 +102,8 @@ function constructor(componentName: string, class: string, customProps: table, d
             BackgroundColor3 = backgroundColor,
 
             [Children] = {
-                New "UIPadding" {
-                    PaddingTop = paddingTop,
-                    PaddingBottom = paddingBottom,
-                    PaddingLeft = paddingLeft,
-                    PaddingRight = paddingRight,
-                },
+                paddingInstance,
+                cornerInstance,
                 children
             },
         }

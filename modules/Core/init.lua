@@ -8,7 +8,6 @@
 local ConstructCore = {
 	Provider = require(script.Provider),
 	extendTheme = require(script.ThemeManager).extendTheme,
-	Cool = require(script.Cool),
 	New = require(script.FactoryNew),
 	Fusion = require(script.Parent.Parent.Fusion),
 }

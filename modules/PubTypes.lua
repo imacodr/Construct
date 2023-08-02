@@ -9,16 +9,16 @@
 type Set<T> = {[T]: any}
 
 --[[
-	General use GlobalTypes
+	General use PubTypes
 ]]
 
 -- A unique symbolic value.
 export type Symbol = {
-	type: string, -- replace with "Symbol" when Luau supports singleton GlobalTypes
+	type: string, -- replace with "Symbol" when Luau supports singleton PubTypes
 	name: string
 }
 
--- GlobalTypes that can be expressed as vectors of numbers, and so can be animated.
+-- PubTypes that can be expressed as vectors of numbers, and so can be animated.
 export type Animatable =
 	number |
 	CFrame |
@@ -55,7 +55,7 @@ export type Version = {
 	isRelease: boolean
 }
 --[[
-	Generic reactive graph GlobalTypes
+	Generic reactive graph PubTypes
 ]]
 
 -- A graph object which can have dependents.
@@ -71,7 +71,7 @@ export type Dependent = {
 
 -- An object which stores a piece of reactive state.
 export type StateObject<T> = Dependency & {
-	type: string, -- replace with "State" when Luau supports singleton GlobalTypes
+	type: string, -- replace with "State" when Luau supports singleton PubTypes
 	kind: string,
 	get: (StateObject<T>, asDependency: boolean?) -> T
 }
@@ -80,41 +80,41 @@ export type StateObject<T> = Dependency & {
 export type CanBeState<T> = StateObject<T> | T
 
 --[[
-	Specific reactive graph GlobalTypes
+	Specific reactive graph PubTypes
 ]]
 
 -- A state object whose value can be set at any time by the user.
 export type Value<T> = StateObject<T> & {
-	-- kind: "State" (add this when Luau supports singleton GlobalTypes)
+	-- kind: "State" (add this when Luau supports singleton PubTypes)
  	set: (Value<T>, newValue: any, force: boolean?) -> ()
 }
 
 -- A state object whose value is derived from other objects using a callback.
 export type Computed<T> = StateObject<T> & Dependent & {
-	-- kind: "Computed" (add this when Luau supports singleton GlobalTypes)
+	-- kind: "Computed" (add this when Luau supports singleton PubTypes)
 }
 
 -- A state object whose value is derived from other objects using a callback.
 export type ForPairs<KO, VO> = StateObject<{ [KO]: VO }> & Dependent & {
-	-- kind: "ForPairs" (add this when Luau supports singleton GlobalTypes)
+	-- kind: "ForPairs" (add this when Luau supports singleton PubTypes)
 }
 -- A state object whose value is derived from other objects using a callback.
 export type ForKeys<KO, V> = StateObject<{ [KO]: V }> & Dependent & {
-	-- kind: "ForKeys" (add this when Luau supports singleton GlobalTypes)
+	-- kind: "ForKeys" (add this when Luau supports singleton PubTypes)
 }
 -- A state object whose value is derived from other objects using a callback.
 export type ForValues<K, VO> = StateObject<{ [K]: VO }> & Dependent & {
-	-- kind: "ForKeys" (add this when Luau supports singleton GlobalTypes)
+	-- kind: "ForKeys" (add this when Luau supports singleton PubTypes)
 }
 
 -- A state object which follows another state object using tweens.
 export type Tween<T> = StateObject<T> & Dependent & {
-	-- kind: "Tween" (add this when Luau supports singleton GlobalTypes)
+	-- kind: "Tween" (add this when Luau supports singleton PubTypes)
 }
 
 -- A state object which follows another state object using spring simulation.
 export type Spring<T> = StateObject<T> & Dependent & {
-	-- kind: "Spring" (add this when Luau supports singleton GlobalTypes)
+	-- kind: "Spring" (add this when Luau supports singleton PubTypes)
 	-- Uncomment when ENABLE_PARAM_SETTERS is enabled
 	-- setPosition: (Spring<T>, newValue: Animatable) -> (),
 	-- setVelocity: (Spring<T>, newValue: Animatable) -> (),
@@ -123,19 +123,19 @@ export type Spring<T> = StateObject<T> & Dependent & {
 
 -- An object which can listen for updates on another state object.
 export type Observer = Dependent & {
-	-- kind: "Observer" (add this when Luau supports singleton GlobalTypes)
+	-- kind: "Observer" (add this when Luau supports singleton PubTypes)
   	onChange: (Observer, callback: () -> ()) -> (() -> ())
 }
 
 --[[
-	Instance related GlobalTypes
+	Instance related PubTypes
 ]]
 
 -- Denotes children instances in an instance or component's property table.
 export type SpecialKey = {
-	type: string, -- replace with "SpecialKey" when Luau supports singleton GlobalTypes
+	type: string, -- replace with "SpecialKey" when Luau supports singleton PubTypes
 	kind: string,
-	stage: string, -- replace with "self" | "descendants" | "ancestor" | "observer" when Luau supports singleton GlobalTypes
+	stage: string, -- replace with "self" | "descendants" | "ancestor" | "observer" when Luau supports singleton PubTypes
 	apply: (SpecialKey, value: any, applyTo: Instance, cleanupTasks: {Task}) -> ()
 }
 

@@ -5,6 +5,12 @@
 	This file is the entry point for the Construct Components module.
 --]]
 
+--[=[
+    @class Components
+
+	A collection of components that can be used to build a UI.
+]=]
+local Components = {}
 local ConstructComponents = {
 	Box = require(script.Box),
 	Text = require(script.Text),
@@ -15,6 +21,7 @@ local ConstructComponents = {
 	Stack = require(script.Stack).Stack,
 	HStack = require(script.Stack).Stack,
 	VStack = require(script.Stack).VStack,
+	useToast = require(script.Toast),
 }
 
 return ConstructComponents

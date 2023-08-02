@@ -33,6 +33,11 @@ export type ThemeProps = {
 	colors: {},
 }
 
+export type ThemedProp = string | Color3Value | Font
+
+
+export type CanBeState<T> = T | Fusion.State<T>
+
 export type BaseComponents = {
 	Name: CanBeState<string>?,
 	LayoutOrder: CanBeState<number>?,

@@ -1,52 +1,40 @@
-local Packages = script.Parent.Parent.Parent
-local Fusion = require(Packages.Fusion)
+--[=[
+	@function Icon
+	@within Components
+	This is a component that extends ImageLabel and is used to display images on the screen.
 
-local New, Children, Value, OnEvent, Computed, Spring = Fusion.New, Fusion.Children, Fusion.Value, Fusion.OnEvent, Fusion.Computed, Fusion.Spring
+	@param props ImageProps -- The properties to create the image component
+	@return Instance -- Returns the generated Image component
+]=]
+
+local Core = script.Parent.Parent.Core
+
+local constructor = require(Core.constructor)
+local checkTheme = require(Core.ThemeManager).checkTheme
 
 local Utils = require(script.Parent.Parent.Utils)
-
-local checkPosition = require(script.Parent.Parent.Utils.CheckConfig).checkPosition
-local checkSize = require(script.Parent.Parent.Utils.CheckConfig).checkSize
-local checkTheme = require(script.Parent.Parent.Core.ThemeManager).checkTheme
-local checkAnchorPoint = require(script.Parent.Parent.Utils.CheckConfig).checkAnchorPoint
-
 local Basics = Utils.Basics
 local Constants = Utils.Constants
 
 local GlobalTypes = script.Parent.Parent.GlobalTypes
 
 function Icon(props: GlobalTypes.IconProps): Child
-	local size = checkSize("Icon", props.PreSize)
-	local position = checkPosition(props)
-
-	local paddingTop = props.PaddingTop or props.PaddingY or props.Padding or UDim.new(0, 0)
-	local paddingBottom = props.PaddingBottom or props.PaddingY or props.Padding or UDim.new(0, 0)
-	local paddingLeft = props.PaddingLeft or props.PaddingX or props.Padding or UDim.new(0, 0)
-	local paddingRight = props.PaddingRight or props.PaddingX or props.Padding or UDim.new(0, 0)
-
-	return New("ImageLabel")({
-		Name = props.Name or "Icon",
-		Position = props.Position or position.Position,
-		Size = props.Size or size,
-		AnchorPoint = checkAnchorPoint(props) or position.AnchorPoint,
-		AutomaticSize = props.AutomaticSize,
-		ZIndex = props.ZIndex,
-		BackgroundTransparency = props.BackgroundTransparency or 1,
+	return constructor("Icon", "ImageLabel", {
+		"Icon",
+		"Transparency",
+		"IconColor",
+		"Color",
+		"ImageColor",
+	}, {
+		BackgroundTransparency = 1,
 		Image = props.Icon or Constants.NO_ICON_URL,
-		ImageColor3 = checkTheme(props.Color) or checkTheme(props.Colour) or checkTheme(props.IconColor) or checkTheme(
-			props.IconColour
-		) or Basics.Icon.IconColor,
+		ImageColor3 = checkTheme(props.Color) or
+			checkTheme(props.IconColor) or
+			checkTheme(props.ImageColor) or
+			checkTheme(props.ImageColor3) or Basics.Icon.IconColor,
 		ImageTransparency = props.Transparency,
-		[Children] = {
-			New("UIPadding")({
-				PaddingTop = paddingTop,
-				PaddingBottom = paddingBottom,
-				PaddingLeft = paddingLeft,
-				PaddingRight = paddingRight,
-			}),
-			props[Children],
-		},
-	})
+		ScaleType = Enum.ScaleType.Fit,
+	}) (props)
 end
 
 return Icon

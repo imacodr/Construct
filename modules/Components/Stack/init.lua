@@ -12,7 +12,9 @@ local GlobalTypes = script.Parent.Parent.GlobalTypes
 
 local Box = require(script.Parent.Box)
 
-local Basics = require(script.Parent.Parent.Utils.Basics)
+local Utils = require(script.Parent.Parent.Utils)
+local Basics = Utils.Basics
+local Logger = Utils.loggers
 
 function Stack(props: GlobalTypes.StackProps): Child
 	local position = props.PrePosition
@@ -50,6 +52,7 @@ function Stack(props: GlobalTypes.StackProps): Child
 			FillDirection = props.Direction or Enum.FillDirection.Horizontal,
 			HorizontalAlignment = props.HorizontalAlignment or horizontalAlignment,
 			VerticalAlignment = props.VerticalAlignment or verticalAlignment,
+			SortOrder = props.SortOrder or Enum.SortOrder.LayoutOrder,
 			Padding = props.Spacing or UDim.new(0.01, 0),
 		}),
 		children,

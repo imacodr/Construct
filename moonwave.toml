@@ -1,1 +1,40 @@
 title = "Construct"
+
+[docusaurus]
+tagline = "The ultimate component library for Fusion with next level theming capabilities."
+
+
+[[navbar.items]]
+href = "https://discord.gg/SdxWw3xefW"
+label = "Discord"
+position = "right"
+
+[footer]
+style = "dark"
+copyright = "Copyright © 2023 imacodr"
+
+[[footer.links]]
+title = "My Socials"
+
+[[footer.links.items]]
+label = "𝕏.com"
+href = "https://twitter.com/imacodr"
+
+[home]
+enabled = true
+includeReadme = true
+
+[[home.features]]
+title = "Feature 1"
+description = "This is a feature"
+image = "https://url"
+
+[[home.features]]
+title = "Feature 2"
+description = "This is a second feature"
+image = "https://url"
+
+[[home.features]]
+title = "Feature 3"
+description = "This is a third feature"
+image = "https://url"

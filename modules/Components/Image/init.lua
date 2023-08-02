@@ -23,19 +23,21 @@ local GlobalTypes = script.Parent.Parent.GlobalTypes
 type ImageProps = GlobalTypes.BaseComponents & {
     BackgroundTransparency: number?,
     Image: string?,
-    ImageColor: Color3?,
-    ImageColor3: Color3?,
+    Color: string | Color3?,
+    ImageColor: string | Color3?,
+    ImageColor3: string | Color3?,
     Transparency: number?,
 }
 
 function Image(props: ImageProps): ImageLabel
     return constructor("Image", "ImageLabel", {
-        "Transparency"
+        "Transparency",
+        "Color",
+		"ImageColor",
     }, {
         BackgroundTransparency =  1,
         Image = Constants.NO_ICON_URL,
         ImageColor3 = checkTheme(props.Color)
-            or checkTheme(props.Colour)
             or checkTheme(props.ImageColor)
             or checkTheme(props.ImageColor3)
             or Basics.Image.ImageColor,
