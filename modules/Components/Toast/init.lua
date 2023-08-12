@@ -1,6 +1,7 @@
 -- TODO: Toast component
 
 local HttpService = game:GetService("HttpService")
+local TextService = game:GetService("TextService")
 
 local Packages = script.Parent.Parent.Parent
 local Fusion = require(Packages.Fusion)
@@ -10,6 +11,7 @@ local Children = Fusion.Children
 local Value = Fusion.Value
 local Tween = Fusion.Tween
 local Computed = Fusion.Computed
+local Ref = Fusion.Ref
 
 local Box = require(script.Parent.Box)
 local HStack = require(script.Parent.Stack).Stack
@@ -31,6 +33,33 @@ local FactoryNew = require(script.Parent.Parent.Core).New
 	Toast is still a work in progress. It is not yet implemented in the library.
 --]]
 
+local toastPosition = {
+	topLeft = {
+		horizontalAlignment = Enum.HorizontalAlignment.Left,
+		verticalAlignment = Enum.VerticalAlignment.Top,
+	},
+	topRight = {
+		horizontalAlignment = Enum.HorizontalAlignment.Right,
+		verticalAlignment = Enum.VerticalAlignment.Top,
+	},
+	topCenter = {
+		horizontalAlignment = Enum.HorizontalAlignment.Center,
+		verticalAlignment = Enum.VerticalAlignment.Top,
+	},
+	bottomLeft = {
+		horizontalAlignment = Enum.HorizontalAlignment.Left,
+		verticalAlignment = Enum.VerticalAlignment.Bottom,
+	},
+	bottomRight = {
+		horizontalAlignment = Enum.HorizontalAlignment.Right,
+		verticalAlignment = Enum.VerticalAlignment.Bottom,
+	},
+	bottomCenter = {
+		horizontalAlignment = Enum.HorizontalAlignment.Center,
+		verticalAlignment = Enum.VerticalAlignment.Bottom,
+	},
+}
+
 type ToastBaseProps = {
 	_frameProps: {
 		[any]: any
@@ -46,7 +75,6 @@ type ToastBaseProps = {
 type ToastProps = ToastBaseProps & {
 	Id: string,
 	Ready: boolean,
-	Parent: Instance,
 	Title: string,
 	Icon: string?,
 }
@@ -72,7 +100,6 @@ function Toast(props: ToastProps): Instance
 				return UDim2.new(0.5, 0, 0.95, 0)
 			end
 		end), TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut)),
-		Parent = props.Parent,
 		AnchorPoint = Vector2.new(0.5, 0.5),
 		Size = UDim2.new(0.15, 0, 0.06, 0),
 		Bg = props.Bg,
@@ -84,6 +111,7 @@ function Toast(props: ToastProps): Instance
 			end
 		end), TweenInfo.new(0.4, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut)),
 		CornerRadius = UDim.new(0.2, 0),
+		PaddingY = UDim.new(0.05, 0),
 		props._frameProps,
 
 		[Children] = {
@@ -107,15 +135,24 @@ end
 function useToast(props: useToastProps)
 	local ready = Value(false)
 
-	local parent
+	local parent, toastId
 
-	if props.provider then
-		parent = props.provider:WaitForChild("ConstructPortal"):WaitForChild("ToastHaven")
+	local position
+	local positionName
+
+	if props.position then
+		position = toastPosition[props.position]
+		positionName = props.position
 	else
-		parent = game.Players.LocalPlayer.PlayerGui:WaitForChild("ConstructBuilder"):WaitForChild("ConstructPortal"):WaitForChild("ToastHaven")
+		position = toastPosition.bottomRight
+		positionName = "bottomRight"
 	end
 
-	local toastId
+	if props.provider then
+		parent = props.provider:WaitForChild("ConstructPortal")
+	else
+		parent = game.Players.LocalPlayer.PlayerGui:WaitForChild("ConstructBuilder"):WaitForChild("ConstructPortal")
+	end
 
 	local ok,result = pcall(HttpService.GenerateGUID, HttpService, false)
 	if ok then
@@ -127,7 +164,6 @@ function useToast(props: useToastProps)
 
 	local toast = Toast {
 		Id = "Toast_" .. toastId,
-		Parent = parent,
 		Ready = ready,
 		Icon = props.icon,
 		Title = props.title,
@@ -136,6 +172,32 @@ function useToast(props: useToastProps)
 		_textProps = props._textProps,
 		_iconProps = props._iconProps,
 	}
+
+	local haven = parent:FindFirstChild("haven_" .. positionName)
+
+	if haven then
+		toast.Parent = haven
+	else
+		haven = FactoryNew("Frame")({
+			Name = "haven_" .. positionName,
+			PrePosition = "center",
+			Parent = parent,
+			BackgroundTransparency = 1,
+			Size = UDim2.fromScale(0.99, 0.945),
+			ZIndex = 99,
+	
+			[Children] = {
+				toast,
+				New "UIListLayout" {
+					SortOrder = Enum.SortOrder.LayoutOrder,
+					FillDirection = Enum.FillDirection.Vertical,
+					HorizontalAlignment = position.horizontalAlignment,
+					VerticalAlignment = position.verticalAlignment,
+					Padding = UDim.new(0.01, 0),
+				},
+			}
+		})
+	end
 
 	ready:set(true)
 	
@@ -151,6 +213,10 @@ function useToast(props: useToastProps)
 		ready:set(false)
 		task.delay(0.4, function()
 			toast:Destroy()
+
+			if #haven:GetChildren() == 1 then
+				haven:Destroy()
+			end
 		end)
 	end)
 end

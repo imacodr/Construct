@@ -37,7 +37,8 @@ function constructor(componentName: string, class: string, customProps: table, d
         local position = checkPosition(finalProps)
         finalProps.PrePosition = nil
         local anchorPoint = checkAnchorPoint(finalProps) or position.AnchorPoint
-
+        finalProps.AnchorPoint = nil
+        
         local paddingTop = finalProps.PaddingTop or finalProps.PaddingY or finalProps.Padding
         local paddingBottom = finalProps.PaddingBottom or finalProps.PaddingY or finalProps.Padding
         local paddingLeft = finalProps.PaddingLeft or finalProps.PaddingX or finalProps.Padding

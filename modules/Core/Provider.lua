@@ -20,25 +20,6 @@ function Provider(props: GlobalTypes.KitProviderProps)
 			BackgroundTransparency = 1,
 			Size = UDim2.fromScale(1, 1),
 			ZIndex = 99,
-
-			[Children] = {
-				New("Frame")({
-					Name = "ToastHaven",
-					BackgroundTransparency = 1,
-					Size = UDim2.fromScale(1, 0.99),
-					ZIndex = 99,
-
-					[Children] = {
-						New "UIListLayout" {
-							SortOrder = Enum.SortOrder.LayoutOrder,
-							FillDirection = Enum.FillDirection.Vertical,
-							HorizontalAlignment = Enum.HorizontalAlignment.Center,
-							VerticalAlignment = Enum.VerticalAlignment.Bottom,
-							Padding = UDim.new(0.01, 0),
-						},
-					}
-				}),
-			}
 		}),
 		children,
 	}

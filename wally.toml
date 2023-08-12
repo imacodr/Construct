@@ -1,14 +1,14 @@
 [package]
 name = "imacodr/construct"
-description = "A UI Framework for Roblox based on Fusion."
-version = "0.0.12-alpha"
+description = "The ultimate component library for Fusion with next level theming capabilities."
+version = "0.0.14-alpha"
 authors = [
     "Sam P <me@imacodr.com>"
 ]
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
 exclude = [
-    "/modules/Icons"
+    "modules/Icons"
 ]
 
 [dependencies]
