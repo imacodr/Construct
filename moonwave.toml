@@ -1,8 +1,10 @@
 title = "Construct"
 
 [docusaurus]
-tagline = "The ultimate component library for Fusion with next level theming capabilities."
-
+tagline = "The ultimate component library for Fusion & Luau projects with next level theming capabilities."
+onBrokenLinks = "throw"
+onBrokenMarkdownLinks = "warn"
+favicon = "/logo.png"
 
 [[navbar.items]]
 href = "https://discord.gg/SdxWw3xefW"
@@ -25,16 +27,16 @@ enabled = true
 includeReadme = true
 
 [[home.features]]
-title = "Feature 1"
+title = "Create amazing elements"
 description = "This is a feature"
-image = "https://url"
+image = "/buildElements.gif"
 
 [[home.features]]
-title = "Feature 2"
+title = "Use extensive theme for consistency"
 description = "This is a second feature"
-image = "https://url"
+image = "/customize.gif"
 
 [[home.features]]
-title = "Feature 3"
+title = "Built on Fusion"
 description = "This is a third feature"
-image = "https://url"
+image = "/builtOnFusion.png"

@@ -1,5 +1,7 @@
 [![Banner|690x215](./assets/banner.png)](https://imacodr.github.io/Construct)
 
+<!--moonwave-hide-before-this-line-->
+
 # Construct
 
 The ultimate component library for Fusion with next level theming capabilities.
