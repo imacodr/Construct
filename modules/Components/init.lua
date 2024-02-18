@@ -10,7 +10,7 @@
 
 	A collection of components that can be used to build a UI.
 ]=]
-local Components = {}
+
 local ConstructComponents = {
 	Box = require(script.Box),
 	Text = require(script.Text),
@@ -22,6 +22,10 @@ local ConstructComponents = {
 	HStack = require(script.Stack).Stack,
 	VStack = require(script.Stack).VStack,
 	useToast = require(script.Toast),
+
+	_experimental = {
+		Portal = require(script.Portal),
+	}
 }
 
 return ConstructComponents

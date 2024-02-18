@@ -16,7 +16,7 @@ local Utils = require(script.Parent.Parent.Utils)
 local Basics = Utils.Basics
 local Logger = Utils.loggers
 
-function Stack(props: GlobalTypes.StackProps): Child
+function Stack(props: GlobalTypes.StackProps)
 	local position = props.PrePosition
 	local horizontalAlignment = Enum.HorizontalAlignment.Center
 	local verticalAlignment = Enum.VerticalAlignment.Center

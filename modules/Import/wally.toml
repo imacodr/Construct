@@ -1,0 +1,9 @@
+[package]
+name = "imacodr/constructbridge"
+description = "A tool to help require your components, providers and other tools from the Construct library."
+version = "0.0.1-alpha"
+authors = [
+    "Sam P <me@imacodr.com>"
+]
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"

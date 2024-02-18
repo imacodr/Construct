@@ -1,7 +1,9 @@
 local Packages = script.Parent.Parent
 local Fusion = require(Packages.Fusion)
 
-type Children = Fusion.Children
+local PubTypes = script.Parent.PubTypes
+
+type Children = PubTypes.Children
 
 local DefaultThemes = {
 	["white"] = {

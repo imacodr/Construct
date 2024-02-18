@@ -89,19 +89,37 @@ type useToastProps = ToastBaseProps & {
 	backgroundColor: Color3Value?,
 }
 
+local VariantSettings = {
+	success = {
+		icon = "rbxassetid://10709790387",
+		backgroundColor = "Colors.Green.500",
+	},
+	error = {
+		icon = "rbxassetid://10747383819",
+		backgroundColor = "Colors.Red.500",
+	},
+	warning = {
+		icon = "rbxassetid://10709753149",
+		backgroundColor = "Colors.Yellow.500",
+	},
+	info = {
+		icon = "rbxassetid://10723415903",
+		backgroundColor = "Colors.Blue.500",
+	},
+}
+
 function Toast(props: ToastProps): Instance
 	return Box {
 		As = "CanvasGroup",
 		Name = props.Id,
-		Position = Tween(Computed(function()
-			if props.Ready:get() then
-				return UDim2.new(0.5, 0, 0.9, 0)
+		AnchorPoint = Vector2.new(0.5, 0.5),
+		Size = Tween(Computed(function()
+			if props.Ready:get() then	
+				return UDim2.new(0.15, 0, 0.06, 0)
 			else
-				return UDim2.new(0.5, 0, 0.95, 0)
+				return UDim2.new(0.05, 0, 0.05, 0)
 			end
 		end), TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut)),
-		AnchorPoint = Vector2.new(0.5, 0.5),
-		Size = UDim2.new(0.15, 0, 0.06, 0),
 		Bg = props.Bg,
 		GroupTransparency = Tween(Computed(function()
 			if props.Ready:get() then
@@ -162,12 +180,14 @@ function useToast(props: useToastProps)
 		toastId = math.random(1,1000000000)
 	end
 
+	local variant = VariantSettings[props.variant] or VariantSettings.info
+
 	local toast = Toast {
 		Id = "Toast_" .. toastId,
 		Ready = ready,
-		Icon = props.icon,
+		Icon = props.icon or variant.icon,
 		Title = props.title,
-		Bg = props.backgroundColor or Basics.Toast.Bg,
+		Bg = props.backgroundColor or variant.backgroundColor or Basics.Toast.Bg,
 		_frameProps = props._frameProps,
 		_textProps = props._textProps,
 		_iconProps = props._iconProps,
@@ -208,6 +228,7 @@ function useToast(props: useToastProps)
 	else
 		duration = 5
 	end
+	
 
 	task.delay(duration, function()
 		ready:set(false)
