@@ -1,4 +1,4 @@
-local GlobalTypes = script.Parent.Parent.GlobalTypes
+local GlobalTypes = require(script.Parent.Parent.GlobalTypes)
 
 local Core = script.Parent.Parent.Core
 local Utils = script.Parent.Parent.Utils
@@ -10,7 +10,7 @@ export type BoxProps = GlobalTypes.BaseComponents & {
 	BackgroundTransparency: number?,
 	BackgroundColor: string | Color3Value?,
 	Bg: string | Color3Value?,
-    As: "Frame" | "CanvasGroup"
+    As: "Frame" | "CanvasGroup"?
 }
 
 --[=[

@@ -10,9 +10,9 @@
 local Core = script.Parent.Parent.Core
 
 local constructor = require(Core.constructor)
-local checkTheme = require(Core.ThemeManager).checkTheme
+local checkTheme = require(Core.themeManager).checkTheme
 
-local GlobalTypes = script.Parent.Parent.GlobalTypes
+local GlobalTypes = require(script.Parent.Parent.GlobalTypes)
 
 local Basics = require(script.Parent.Parent.Utils.Basics)
 
@@ -24,7 +24,9 @@ type TextProps = GlobalTypes.BaseComponents & {
 	TextColor: GlobalTypes.ThemedProp?,
 	OnHoverStart: () -> any?,
 	OnHoverEnd: () -> any?,
-	Text: string,
+	Text: string?,
+	FontFace: Font?,
+	Font: Font?,
 }
 
 
@@ -32,7 +34,6 @@ function Text(props: TextProps): Instance
 	return constructor("Text", "TextLabel", {
 		"Font",
 		"TextColor",
-		"Font",
 	}, {
 		FontFace = checkTheme(props.FontFace) or checkTheme(props.Font) or Basics.Text.Font,
 		TextColor3 = checkTheme(props.TextColor) or Basics.Text.TextColor,

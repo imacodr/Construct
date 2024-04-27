@@ -10,13 +10,13 @@
 local Core = script.Parent.Parent.Core
 
 local constructor = require(Core.constructor)
-local checkTheme = require(Core.ThemeManager).checkTheme
+local checkTheme = require(Core.themeManager).checkTheme
 
 local Utils = require(script.Parent.Parent.Utils)
 local Basics = Utils.Basics
 local Constants = Utils.Constants
 
-local GlobalTypes = script.Parent.Parent.GlobalTypes
+local GlobalTypes = require(script.Parent.Parent.GlobalTypes)
 
 function Icon(props: GlobalTypes.IconProps): Child
 	return constructor("Icon", "ImageLabel", {

@@ -26,7 +26,7 @@ local Utils = require(script.Parent.Parent.Utils)
 local Basics = Utils.Basics
 local Logger = Utils.loggers
 
-local checkTheme = require(script.Parent.Parent.Core.ThemeManager)
+local checkTheme = require(script.Parent.Parent.Core.themeManager)
 local FactoryNew = require(script.Parent.Parent.Core).New
 
 --[[

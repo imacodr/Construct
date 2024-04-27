@@ -4,4 +4,6 @@ sidebar_position: 1
 
 # Getting Started
 
-Heya I'm still making the docs haha
+Learn to use Construct and get ready to explore all of our features.
+
+## "Hello World" - Construct

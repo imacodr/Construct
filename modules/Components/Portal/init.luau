@@ -14,17 +14,18 @@ local Utils = script.Parent.Parent.Utils
 
 local constructor = require(Core.constructor)
 local FactoryNew = require(Core.FactoryNew)
-local checkTheme = require(Core.ThemeManager).checkTheme
+local checkTheme = require(Core.themeManager).checkTheme
 
 local Logger = require(Utils.loggers)
 
-local GlobalTypes = script.Parent.Parent.GlobalTypes
+local GlobalTypes = require(script.Parent.Parent.GlobalTypes)
 
 export type PortalProps = GlobalTypes.BaseComponents & {
 	BackgroundTransparency: number?,
 	BackgroundColor: string | Color3Value?,
 	Bg: string | Color3Value?,
-    As: "Frame" | "CanvasGroup"
+    As: "Frame" | "CanvasGroup",
+    Provider: Instance?
 }
 
 function Portal(props: PortalProps): Instance
@@ -34,7 +35,8 @@ function Portal(props: PortalProps): Instance
         Logger.logError("invalidClassWhenAssimilating", class, "Portal", "Frame or CanvasGroup")
     end
 
-    local parent, portalId: Instance, number
+    local parent: Instance
+    local portalId: number
 
     local ok,result = pcall(HttpService.GenerateGUID, HttpService, false)
 	if ok then
@@ -56,7 +58,7 @@ function Portal(props: PortalProps): Instance
 
 
     if props.Provider then
-		parent = props.provider:WaitForChild("ConstructPortal")
+		parent = props.Provider:WaitForChild("ConstructPortal")
 	else
 		parent = game.Players.LocalPlayer.PlayerGui:WaitForChild("ConstructBuilder"):WaitForChild("ConstructPortal")
 	end
