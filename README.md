@@ -1,6 +1,4 @@
-[![Banner|690x215](./assets/banner.png)](https://imacodr.github.io/Construct)
-
-<!--moonwave-hide-before-this-line-->
+[![Banner|690x215](./gh-assets/banner.png)](https://imacodr.github.io/Construct)
 
 # Construct
 

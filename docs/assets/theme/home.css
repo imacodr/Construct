@@ -1,0 +1,74 @@
+.md-content {
+  max-width: none;
+  --distance-to-top-of-page: 8rem;
+}
+
+@media screen and (max-width: 76.25rem) {
+  .md-content {
+    --distance-to-top-of-page: 2.4rem;
+  }
+}
+
+#container {
+  display: flex;
+  position: relative;
+  min-height: calc(100vh - 5rem - var(--distance-to-top-of-page));
+  padding-bottom: var(--distance-to-top-of-page);
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  transition: 0.2s;
+}
+
+#titleSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#title {
+  margin: 0;
+  font-size: 100px;
+}
+
+#logoTitleHStack {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 0;
+}
+
+#logo {
+  width: auto;
+  height: 100px;
+}
+
+body {
+  background-image: url("../bottomBar.png");
+  background-size: cover;
+  background-position: center;
+}
+
+#container a {
+  background-color: #ffd600;
+  padding: 15px;
+  padding-left: 50px;
+  padding-right: 50px;
+  color: black;
+  font-weight: bold;
+  font-size: larger;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+
+#container a:hover {
+  scale: 1.03;
+}
+
+#buttons {
+  display: flex;
+  padding-top: 10px;
+  gap: 20px;
+}
