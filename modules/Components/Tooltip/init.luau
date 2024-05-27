@@ -11,7 +11,7 @@ local Text = require(script.Parent.Text)
 local GlobalTypes = script.Parent.Parent.GlobalTypes
 
 local Basics = require(script.Parent.Parent.Utils.Basics)
-local checkTheme = require(script.Parent.Parent.Core.ThemeManager).checkTheme
+local checkTheme = require(script.Parent.Parent.Core.themeManager).checkTheme
 
 --[[
 	Tooltip is still a work in progress. It is not yet implemented in the library.

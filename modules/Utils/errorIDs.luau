@@ -5,7 +5,7 @@ return {
     wrongComponentPropertyType = "Component property '%s' is of type '%s', but should be of type '%s'.",
     wrongComponentPropertyType2 = "Component property '%s' is of type '%s', but should be of type '%s' or '%s'.",
     invalidClassWhenAssimilating = "Invalid class '%s' when assimilating '%s'. This component can only assimilate the following: '%s'",
-    themeManagerCatch = "ThemeManager Error: '%s'",
+    themeManagerCatch = "themeManager Error: '%s'",
     checkPositionCatch = "checkPosition Error: '%s'",
     checkSizeCatch = "checkSize Error: '%s'",
     checkAnchorPointCatch = "checkAnchorPoint Error: '%s'",

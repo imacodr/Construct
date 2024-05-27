@@ -15,7 +15,7 @@ local PubTypes = script.Parent.Parent.PubTypes
 local checkPosition = CheckConfig.checkPosition
 local checkSize = CheckConfig.checkSize
 local checkAnchorPoint = CheckConfig.checkAnchorPoint
-local checkTheme = require(script.Parent.Parent.Core.ThemeManager).checkTheme
+local checkTheme = require(script.Parent.Parent.Core.themeManager).checkTheme
 
 function mergeProps(defaultProps, props)
     local finalProps = {}

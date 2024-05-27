@@ -6,7 +6,7 @@ local Utils = script.Parent.Parent.Utils
 local constructor = require(Core.constructor)
 
 local Logger = require(Utils.loggers)
-export type BoxProps = GlobalTypes.BaseComponents & {
+export type Props = GlobalTypes.BaseComponents & {
 	BackgroundTransparency: number?,
 	BackgroundColor: string | Color3Value?,
 	Bg: string | Color3Value?,
@@ -18,10 +18,10 @@ export type BoxProps = GlobalTypes.BaseComponents & {
     @within Components
     This is a component that extends ImageLabel and is used to display images on the screen.
 
-    @param props BoxProps -- The properties to create the image component
+    @param props Props -- The properties to create the image component
     @return Instance -- Returns the generated Image component
 ]=]
-function Box(props: BoxProps): Instance
+function Box(props: Props): Instance
     local class = props.As or "Frame"
 
     if class ~= "Frame" and class ~= "CanvasGroup" then

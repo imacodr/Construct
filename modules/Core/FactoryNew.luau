@@ -2,7 +2,7 @@ local Packages = script.Parent.Parent.Parent
 
 local constructor = require(script.Parent.constructor)
 
-local PubTypes = script.Parent.Parent.PubTypes
+local PubTypes = require(script.Parent.Parent.PubTypes)
 
 return function(className: string)
     return function (props: PubTypes.PropertyTable): Instance

@@ -9,9 +9,9 @@
 
 local Construct = {
 	Core = require(script.Core),
-	Components = require(script.Components),
-	Import = require(script.Import),
+	Component = require(script.Components.Caller),
 	_internal = {
+		Components = require(script.Components),
 		Utils = require(script.Utils),
 		FusionPubTypes = require(script.PubTypes),
 		GlobalTypes = require(script.GlobalTypes),

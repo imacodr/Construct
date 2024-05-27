@@ -1,34 +1,20 @@
 local Packages = script.Parent.Parent
 local Fusion = require(Packages.Fusion)
 
-local PubTypes = script.Parent.PubTypes
+local PubTypes = require(script.Parent.PubTypes)
 
 type Children = PubTypes.Children
 
-local DefaultThemes = {
-	["white"] = {
-		[100] = "#FFFFFF",
-		[200] = "#F2F2F2",
-		[300] = "#E5E5E5",
-		[400] = "#D8D8D8",
-		[500] = "#CCCCCC",
-		[600] = "#BFBFBF",
-		[700] = "#B2B2B2",
-		[800] = "#A5A5A5",
-		[900] = "#999999",
-	},
-}
-
 export type Theme = {}
 
-export type KitProviderProps = {
+export type KitProviderProps = BaseComponents & {
 	Id: string,
 	_override: {
 		ResetOnSpawn: boolean?,
 		ZIndexBehavior: Enum.ZIndexBehavior?,
 		IgnoreGuiInset: boolean?,
 	}?,
-	[Children]: Child,
+	[Children]: PubTypes.Children,
 }
 
 export type ThemeProps = {

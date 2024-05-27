@@ -5,9 +5,7 @@ local Children = Fusion.Children
 
 local New = Fusion.New
 
-local GlobalTypes = script.Parent.Parent.GlobalTypes
-
-function Provider(props: GlobalTypes.KitProviderProps)
+function Provider(props)
 	local player = game.Players.LocalPlayer
 
 	local GuiType = props.GuiType or "ScreenGui"
